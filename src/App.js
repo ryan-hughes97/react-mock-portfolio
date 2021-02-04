@@ -8,28 +8,36 @@ import OurWork from './pages/OurWork';
 import Nav from './components/Nav';
 import MovieDetail from './pages/MovieDetail';
 // Router
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+// Animation
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+  const location = useLocation();
+  console.log(location);
+  // need key of each specific page for animatePresence to work
+
   return (
     <div className='App'>
       <GlobalStyle />
       <Nav />
-      <Switch>
-        <Route path='/' exact>
-          <AboutUs />
-        </Route>
-        <Route path='/work' exact>
-          <OurWork />
-        </Route>
-        <Route path='/work/:id'>
-          {/* :id = anything after the slash */}
-          <MovieDetail />
-        </Route>
-        <Route path='/contact'>
-          <ContactUs />
-        </Route>
-      </Switch>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
+          <Route path='/' exact>
+            <AboutUs />
+          </Route>
+          <Route path='/work' exact>
+            <OurWork />
+          </Route>
+          <Route path='/work/:id'>
+            {/* :id = anything after the slash */}
+            <MovieDetail />
+          </Route>
+          <Route path='/contact'>
+            <ContactUs />
+          </Route>
+        </Switch>
+      </AnimatePresence>
     </div>
   );
 }
