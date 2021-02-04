@@ -1,36 +1,36 @@
 import React from 'react';
 import home1 from '../img/home1.png';
-// import styled
-import styled from 'styled-components';
 import {
   StyledAbout,
   StyledDescription,
   StyledImage,
   StyledHide,
 } from '../styles';
+// Framer motion
+import { motion } from 'framer-motion';
 
 const AboutSection = () => {
   return (
     <StyledAbout>
       <StyledDescription>
-        <div className='title'>
+        <motion.div>
           <StyledHide>
-            <h2>We work to make</h2>
+            <motion.h2>We work to make</motion.h2>
           </StyledHide>
           <StyledHide>
-            <h2>
+            <motion.h2>
               your <span>dreams</span>
-            </h2>
+            </motion.h2>
           </StyledHide>
           <StyledHide>
-            <h2>come true.</h2>
+            <motion.h2>come true.</motion.h2>
           </StyledHide>
-          <p>
-            Contact us for any photography or videography ideas that you have.
-            We have professionals ready to make your ideas a reality.
-          </p>
-          <button>Contact Us</button>
-        </div>
+        </motion.div>
+        <p>
+          Contact us for any photography or videography ideas that you have. We
+          have professionals ready to make your ideas a reality.
+        </p>
+        <button>Contact Us</button>
       </StyledDescription>
       <StyledImage>
         <img src={home1} alt='guy with a camera' />
