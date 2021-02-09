@@ -14,9 +14,13 @@ import {
   lineAnim,
   slider,
   sliderContainer,
+  scrollReveal,
 } from '../animation';
+import { useScroll } from '../components/useScroll';
 
 const OurWork = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
   return (
     <StyledWork
       variants={pageAnimation}
@@ -24,6 +28,7 @@ const OurWork = () => {
       animate='show'
       exit='exit'
       style={{ background: '#fff' }}
+      layout='position'
     >
       <motion.div variants={sliderContainer}>
         <Frame1 variants={slider}></Frame1>
@@ -31,25 +36,47 @@ const OurWork = () => {
         <Frame3 variants={slider}></Frame3>
         <Frame4 variants={slider}></Frame4>
       </motion.div>
-      <StyledMovie>
+      <StyledMovie initial='hidden' variants={fade} animate='show'>
         <motion.h2 variants={fade}>The Athlete</motion.h2>
-        <motion.div variants={lineAnim} className='line'></motion.div>
+        <motion.div
+          variants={lineAnim}
+          transition={{ delay: 1.3 }}
+          className='line'
+        ></motion.div>
         <Link to='/work/the-athlete'>
           <StyledHide>
             <motion.img variants={photoAnim} src={athlete} alt='Athlete' />
           </StyledHide>
         </Link>
       </StyledMovie>
-      <StyledMovie>
+      <StyledMovie
+        variants={scrollReveal}
+        ref={element}
+        animate={controls}
+        initial='hidden'
+      >
         <h2>The Racer</h2>
-        <div className='line'></div>
+        <motion.div
+          variants={lineAnim}
+          transition={{ delay: 0.4 }}
+          className='line'
+        ></motion.div>
         <Link to='/work/the-racer'>
           <img src={theracer} alt='The Racer' />
         </Link>
       </StyledMovie>
-      <StyledMovie>
+      <StyledMovie
+        variants={scrollReveal}
+        ref={element2}
+        animate={controls2}
+        initial='hidden'
+      >
         <h2>Good Times</h2>
-        <div className='line'></div>
+        <motion.div
+          variants={lineAnim}
+          transition={{ delay: 0.4 }}
+          className='line'
+        ></motion.div>
         <Link to='/work/good-times'>
           <img src={goodtimes} alt='Good Times' />
         </Link>
@@ -67,7 +94,7 @@ const StyledWork = styled(motion.div)`
   }
 `;
 
-const StyledMovie = styled.div`
+const StyledMovie = styled(motion.div)`
   padding-bottom: 10rem;
   .line {
     height: 0.5rem;
@@ -89,9 +116,9 @@ const StyledHide = styled.div`
 const Frame1 = styled(motion.div)`
   position: fixed;
   left: 0;
-  top: 10%;
+  top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #fffebf;
   z-index: 2;
 `;
