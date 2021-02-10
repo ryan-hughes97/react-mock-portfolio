@@ -46,6 +46,10 @@ const StyledContact = styled(motion.div)`
   padding: 5rem 10rem;
   color: #353535;
   min-height: 90vh;
+  @media (max-width: 1300px) {
+    padding: 0;
+    font-size: 1rem;
+  }
 `;
 
 const StyledTitle = styled.div`
@@ -62,6 +66,10 @@ const StyledCircle = styled.div`
   width: 3rem;
   height: 3rem;
   background: #353535;
+  @media (max-width: 1300px) {
+    width: 2rem;
+    height: 2rem;
+  }
 `;
 
 const StyledSocial = styled(motion.div)`
@@ -69,6 +77,11 @@ const StyledSocial = styled(motion.div)`
   align-items: center;
   h2 {
     margin: 2rem;
+  }
+  @media (max-width: 1300px) {
+    h2 {
+      margin: 1rem;
+    }
   }
 `;
 
