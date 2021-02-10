@@ -79,6 +79,9 @@ const StyledFaq = styled(StyledAbout)`
     padding: 3rem 0;
     cursor: pointer;
   }
+  .fa-icon {
+    margin-right: 1rem;
+  }
   .answer {
     padding: 2rem 0;
     p {
